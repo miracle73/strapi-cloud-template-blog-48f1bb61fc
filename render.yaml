@@ -8,24 +8,29 @@ services:
     healthCheckPath: /_health
     envVars:
       - key: NODE_VERSION
-        value: 14.17.0
+        value: 18.17.0  # Updated to a more recent LTS version
       - key: NODE_ENV
         value: production
       - key: DATABASE_CLIENT
         value: postgres
       - key: DATABASE_HOST
-        value: your_postgres_host
+        sync: false  # Allows you to set this in the Render dashboard
       - key: DATABASE_PORT
         value: 5432
       - key: DATABASE_NAME
-        value: your_database_name
+        sync: false  # Allows you to set this in the Render dashboard
       - key: DATABASE_USERNAME
-        value: your_database_username
+        sync: false  # Allows you to set this in the Render dashboard
       - key: DATABASE_PASSWORD
-        value: your_database_password
+        sync: false  # Allows you to set this in the Render dashboard
+      - key: DATABASE_SSL
+        value: "true"
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_JWT_SECRET
         generateValue: true
       - key: APP_KEYS
         generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+    autoDeploy: true  # Prevents automatic deployments on every push
